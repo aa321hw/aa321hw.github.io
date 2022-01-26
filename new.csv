@@ -1,0 +1,5 @@
+Shape;dimx;dimy;posx;posy;color
+rect;200;100;0;0;pink
+circle;50;;250;50;
+ellipse;150;50;250;50;
+text;;;150;50;#fff
