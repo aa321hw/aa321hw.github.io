@@ -1,0 +1,73 @@
+<script src='https://d3js.org/d3.v7.min.js'></script>
+<script>
+
+let fileone = 'https://raw.githubusercontent.com/aa321hw/aa321hw.github.io/main/one.csv';
+
+let filetwo = 'https://raw.githubusercontent.com/aa321hw/aa321hw.github.io/main/two.csv';
+
+var files = [fileone,filetwo];
+
+const width = 500;
+const barHeight = 20;
+const margin = 1;
+var values = [];
+
+for (i = 0; i <= files.length - 1; i++){
+  
+  values = [];
+
+	d3.csv(files[i],function(data){
+  values.push(data.Data);
+  console.log(values);
+	}).then(makegraph(values));
+  
+  
+ }
+
+function makegraph(values){
+
+	console.log(values)
+  
+  var scale = d3.scaleLinear()
+ .domain([d3.min(values), d3.max(values)])
+ .range([50, 500]);
+	var svg = d3.select("body")
+ .append("svg")
+ .attr("width", width)
+ .attr("height", barHeight * values.length);
+	var g = svg.selectAll("g")
+ .data(values)
+ .enter()
+ .append("g")
+ .attr("transform", function (d, i) {
+ return "translate(0," + i * barHeight + ")";
+ });
+g.append("rect")
+ .attr("width", function (d) {
+ return scale(d);
+ })
+ .attr('fill', function (d){
+ 
+ if (d < 100){
+ 	return 'green';
+ }
+ if (d > 500){
+ 	return 'red';
+ }
+ else{
+ 	return 'blue';
+ }
+ 
+ })
+ .attr("height", barHeight - margin)
+g.append("text")
+ .attr("x", function (d) { return (scale(d)); })
+ .attr("y", barHeight / 2)
+ .attr("dy", ".35em")
+ .style('text-anchor', 'end')
+ .text(function (d) { return d; });
+
+}
+
+
+</script>
