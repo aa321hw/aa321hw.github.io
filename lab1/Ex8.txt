@@ -1,0 +1,23 @@
+<script src='https://d3js.org/d3.v7.min.js'></script>
+<script>
+  var myData = ['a', 4, 1, 'b', 6, 2, 8, 9, 'z'];
+
+  var span = d3.select('body')
+    .selectAll('span')
+    .data(myData)
+    .enter()
+    //Add a span for every element
+    .append('span')
+    .text(function(d, i) {
+      return d;
+    })
+    //If the element is a number, color is set to green
+    .style("color", function(d, i) {
+      if (d >= 0) {
+        return "green";
+      } else {
+        return "blue";
+      }
+    });
+
+</script>

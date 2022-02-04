@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <script src='https://d3js.org/d3.v7.min.js'></script> 
+</head> 
+<body>  
+ 
+ //Create paragraphs with different class types
+ <p>First paragraph</p> 
+ <p class = "test">Second paragraph</p> 
+ <p class = "test">Third paragraph</p>
+ <p class = "atest">Fourth paragraph</p>
+ 
+<script> 
+    d3.select("p").style("color", "green")
+    	.style("font-size","36px")
+      .style("line-height","12px")
+      .style("font-family","verdana")
+    ;  
+    
+    //Select .test type and set color to blue
+    d3.selectAll(".test").style("color","blue");
+    
+    //Select .atest type and set color to yellow
+    d3.selectAll(".atest").style("color","yellow");
+
+</script> 
+
+</body> 
+</html> 
