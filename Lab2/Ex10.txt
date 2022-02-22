@@ -1,0 +1,39 @@
+<script type='text/javascript' src='https://d3js.org/d3.v7.min.js'></script>
+<script>
+  var svg = d3.select('body')
+    .append('svg')
+    .style('width', '200px')
+    .style('height', '200px');
+
+  svg.append("circle")
+    .attr('cx', 100)
+    .attr('cy', 100)
+    .style("fill", 'red')
+    .attr("r", 30);
+
+  d3.selectAll("circle")
+    .on("mouseover", function(event) {
+      d3.select(this)
+        .transition()
+        .ease(d3.easeBounce)
+        .duration(1000)
+        .style("fill", 'blue')
+        .attr("r", 50);
+
+      // Get current event info
+      // Note: d3.event (event) passed as the first argument to all listeners
+      //console.log(event);
+      // Get x & y co-ordinates
+      // Note: d3.mouse was removed in d3v6, you should use d3.pointer(event)
+      //console.log(d3.pointer(event));
+    })
+    .on("mouseout", function() {
+      d3.select(this)
+        .transition()
+        .ease(d3.easeBounce)
+        .duration(1000)
+        .style("fill", "steelblue")
+        .attr("r", 30);
+    });
+
+</script>

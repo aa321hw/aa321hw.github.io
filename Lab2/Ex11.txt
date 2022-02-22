@@ -1,0 +1,43 @@
+<script type='text/javascript' src='https://d3js.org/d3.v7.min.js'></script>
+<script>
+  d3.select('body')
+    .append("div")
+    .style('width', '100px')
+    .style('height', '100px')
+    .style('background-color', 'blue')
+    .style('transform', 'scale(1.0)')
+    .transition()
+    .ease(d3.easeBounce)
+    .duration(1000)
+    .style("background-color", "red")
+    .style('transform', 'scale(0.5)');
+
+  var svg = d3.select('body')
+    .append('svg')
+    .style('width', '100px')
+    .style('height', '100px');
+
+  svg.append("text")
+    .attr("x", 50)
+    .attr("y", 50)
+    .style("fill", "black")
+    .text("Here");
+
+  //console.log(d3.pointer);
+  d3.selectAll("svg")
+    .on("mouseover", function(event) {
+
+      points = d3.pointer(event);
+      d3.select(this).select("text")
+      .style("fill", 'red')
+      .style("font-size", 20);
+
+    })
+    .on("mouseout", function() {
+      d3.select(this).select("text")
+      .style("fill", 'black')
+      .style("font-size", 12);
+
+    });
+
+</script>
